@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meme</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="stylesheet" href="switch.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="meme.css">
+</head>
+
+<body>
+    <div id="main">
+        <div class="main_items" id="main_saying">
+            <div>
+                <span id='deco_quot'>“</span>
+            </div>
+            <textarea data-id='' id='saying' rows="1"></textarea>
+            <div id='quick_btns'>
+                <a href="#" id='btn_quick_sqve'>SAVE</a>
+                <a href="#" id='btn_quick_cancel'>CANCEL</a>
+            </div>
+        </div>
+
+        <div id="slider">
+            <div id="edit" class="option_items">
+                <div id="add_quote">
+                    <span id='add_quote_title'>“ADD QUOTE”</span>
+                    <div id='input_area'>
+                        <a class="enabled" href="#" id='btn_create'>+</a>
+                        <input type="text" name="new_quote" id="new_quote">
+                    </div>
+                </div>
+            </div>
+            <div id="options" class="option_items">
+                <a id='return' href="#">＞</a>
+                <div id='option_menu'>
+                    <div>
+                        <span class="option_title">Dark Mode</span>
+                        <label id='option_switch' class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <span class="option_title">Quotes</span>
+                    </div>
+                    <div id='saying_container'>
+                        <hr>
+
+                        
+
+                    </div>
+                    <div><a href="#" id='btn_load'>LOAD MORE</a></div>
+                </div>
+            </div>
+        </div>
+        <div id="menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <label id='main_switch' class="switch main_items">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+</body>
+<script src="meme.js"></script>
+
+</html>

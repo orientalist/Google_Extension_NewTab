@@ -1,0 +1,224 @@
+body{
+    box-sizing: border-box;
+}
+.option_items{
+    visibility: hidden;
+}
+.enabled{
+    color: white;
+}
+.disabled{
+    color:gray;
+}
+#main{
+    position: relative;
+    height: 100vh;
+}
+#main_saying{
+    position: absolute;
+    top: 150px;
+    left: 100px;
+    z-index: 2;
+}
+#deco_quot{
+    font-size: 160px;
+}
+#saying{
+    font-family: 'Playfair Display', serif;
+    max-width: 575px;
+    font-size: 56px;
+    margin-left: 86px;
+    font-style: italic;
+    background-color: white;
+    border: none;
+    margin-bottom: 30px;
+    padding: 0px;
+    resize: none;
+}
+#saying:focus{
+    outline: none;
+    box-shadow: 5px 5px black;
+}
+#saying:not([data-id='N']):focus + #quick_btns{
+    opacity: 1;
+}
+#quick_btns{
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    margin-left: calc(30vw - 100px - 87px);
+}
+#quick_btns>a{
+    width: 87px;
+    line-height: 51px;
+    font-size: 19px;
+    text-align: center;
+    text-decoration: none;
+}
+#btn_quick_sqve{
+    background-color: black;
+    color: white;
+}
+#btn_quick_cancel{
+    background-color: white;
+    color: black;
+}
+
+#main_switch{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+#slider{
+    position: absolute;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 30vw;
+    background-image: url(images/scenery.jpg);
+    background-repeat: no-repeat;
+    background-size:70% 100%;
+    -webkit-transition: .4s;
+    transition:.4s;
+
+    display: flex;
+    flex-direction: row;
+}
+#edit{
+    width: 70%;
+    padding-top: 300px;
+    padding-left: 150px;
+}
+#options{
+    min-width: 30%;
+    padding-top: 50px;
+    padding-left: 32px;
+}
+
+#return{
+    text-decoration: none;
+    color: black;
+    font-size: 32px;
+    margin-left: 32px;
+}
+#option_menu{
+    padding-left: 32px;
+    padding-top: 30px;
+    padding-right: 32px;
+}
+#option_menu>div{
+    margin-bottom: 30px;
+}
+#option_menu>div:nth-child(1){
+    line-height: 40px;
+}
+#option_menu>div:nth-child(1)>.switch{
+    float: right;
+}
+.option_title{
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.quote_item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 40px;
+}
+
+.quote_btns{
+    min-width: 145px;
+}
+
+.quote_btns>a{
+    font-size: 24px;
+    color: black;
+    margin-right: 20px;
+    text-decoration: none;
+}
+.quote_saying{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 21px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    width: 100%;
+    border: none;
+    color: black;
+}
+
+.quote_saying:focus{
+    outline: none;
+}
+.btn_save{
+    visibility: hidden;
+}
+
+#menu{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 6px;
+    cursor: pointer;
+}
+#menu>div{
+    width: 42px;
+    height: 5px;
+    background-color: white;
+    margin-bottom: 7px;
+    border-radius: 30px;
+}
+
+#add_quote{
+    color: white;
+}
+
+#add_quote>div{
+    padding-top: 50px;
+}
+
+#add_quote_title{
+    font-size: 56px;
+    font-weight: bold;
+}
+#input_area{
+    position: relative;
+    width: 70%;
+}
+#new_quote{
+    color: white;
+    font-size: 32px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    background: transparent;
+    line-height: 45px;
+    border: none;
+    border-bottom:3px solid white ;
+    min-width: 100%;
+}
+#new_quote:focus{
+    outline: none;
+}
+#btn_create{
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+    font-size: 45px;
+    text-decoration: none;
+    color: white;
+}
+#btn_load{
+    float: right;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    display: none;
+}

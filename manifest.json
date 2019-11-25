@@ -1,0 +1,36 @@
+{
+    "manifest_version": 2,
+    "name": "Daily meme",
+    "version": "1.0",
+    "description": "A extension to show daily meme.",
+    "icons": {
+        "16": "images/16.png",
+        "32": "images/32.png",
+        "128": "images/128.png"
+    },
+    "chrome_url_overrides": {
+        "newtab": "meme.html"
+    },
+    "background": {
+        "persistent": false,
+        "scripts": [
+            "background_script.js"
+        ]
+    },
+    "permissions": [
+        "activeTab",
+        "declarativeContent",
+        "storage",
+        "tabs",
+        "<all_urls>"
+    ],
+    "page_action": {
+        "default_icon": {
+            "16": "images/16.png",
+            "32": "images/32.png",
+            "128": "images/128.png"
+        },
+        "default_title": "I will show you a daily meme!",
+        "default_popup": "popup.html"
+    }
+}
