@@ -377,11 +377,70 @@ function SayingCenter() {
     };
 
     this.SetNight = function () {
-        alert('night');
+        document.getElementById('slider').style.backgroundImage='url(images/scenery_night.jpg)';        
+        document.getElementById('main').style.backgroundColor='black';
+        document.getElementById('saying').style.backgroundColor='black';
+        document.getElementById('saying').style.color='white';
+        document.getElementById('saying').onfocus=function(){
+            this.style['box-shadow']='5px 5px white';
+        };        
+        document.getElementById('deco_quot').style.textShadow='-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white';
+        document.getElementById('btn_quick_sqve').style.backgroundColor='white';
+        document.getElementById('btn_quick_sqve').style.color='black';
+        document.getElementById('btn_quick_cancel').style.backgroundColor='black';
+        document.getElementById('btn_quick_cancel').style.color='white';
+        document.querySelectorAll('#menu>div').forEach(e=>{
+            e.style.backgroundColor='white';
+        });
+        document.getElementById('add_quote').style.textShadow='-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black';
+        document.getElementById('add_quote').style.color='white';
+        document.getElementById('new_quote').style.textShadow='-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black';
+        document.getElementById('new_quote').style.color='white';
+        document.getElementById('new_quote').style['border-bottom']='3px solid white';
+        document.getElementById('btn_create').style.color='white';
+        document.getElementById('options').style.color='white';
+        document.getElementById('return').style.color='white';
+        document.querySelectorAll('.quote_saying').forEach(e=>{
+            e.style.backgroundColor='black';
+            e.style.color='white';
+        });
+        document.querySelectorAll('.fas').forEach(e=>{
+            e.style.color='white';
+        });
+        document.getElementById('btn_load').style.color='white';
     };
 
     this.SetDay = function () {
-        alert('day');
+        document.getElementById('slider').style.backgroundImage='url(images/scenery.jpg)';
+        document.getElementById('main').style.backgroundColor='white';
+        document.getElementById('saying').style.backgroundColor='white';
+        document.getElementById('saying').style.color='black';
+        document.getElementById('saying').onfocus=function(){
+            this.style['box-shadow']='5px 5px black';
+        };
+        document.getElementById('btn_quick_sqve').style.backgroundColor='black';
+        document.getElementById('btn_quick_sqve').style.color='white';
+        document.getElementById('btn_quick_cancel').style.backgroundColor='white';
+        document.getElementById('btn_quick_cancel').style.color='black';
+        document.querySelectorAll('#menu>div').forEach(e=>{
+            e.style.backgroundColor='black';
+        });
+        document.getElementById('add_quote').style.textShadow='-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white';
+        document.getElementById('add_quote').style.color='black';
+        document.getElementById('new_quote').style.textShadow='-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white';
+        document.getElementById('new_quote').style.color='black';
+        document.getElementById('new_quote').style['border-bottom']='3px solid black';
+        document.getElementById('btn_create').style.color='black';
+        document.getElementById('options').style.color='black';
+        document.getElementById('return').style.color='black';
+        document.querySelectorAll('.quote_saying').forEach(e=>{
+            e.style.backgroundColor='white';
+            e.style.color='black';
+        });
+        document.querySelectorAll('.fas').forEach(e=>{
+            e.style.color='black';
+        });
+        document.getElementById('btn_load').style.color='black';
     };
 };
 
