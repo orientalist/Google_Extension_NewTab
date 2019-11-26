@@ -3,6 +3,10 @@ window.onload = function () {
 
     window.saying_instance.GetSayings();
 
+    window.saying_instance.GetConfig(function (is_night) {
+        is_night ? window.saying_instance.SetNight(true) : window.saying_instance.SetDay(true);
+    });
+
     //首頁快速編輯
     document.getElementById('btn_quick_sqve').onclick = function (e) {
         e.preventDefault();
@@ -80,15 +84,28 @@ window.onload = function () {
             document.getElementById('btn_create').click();
         }
     });
-    
+
     //Load more事件
-    document.getElementById('btn_load').onclick=function(e){
+    document.getElementById('btn_load').onclick = function (e) {
         window.saying_instance.AppendSayings(window.saying_instance.Sayings.lastIndex);
     };
 
-    document.getElementById('saying').onkeyup=function(e){
-        window.saying_instance.SetTitle(parseInt(this.getAttribute('data-id')),this.value);
+    document.getElementById('saying').onkeyup = function (e) {
+        window.saying_instance.SetTitle(parseInt(this.getAttribute('data-id')), this.value);
     };
+
+    document.querySelectorAll('.switch>input').forEach(e => {
+        e.onclick = function (event) {
+            SetSwitch(this,function(is_night){
+                if(is_night){
+                    window.saying_instance.SetNight();
+                }else{
+                    window.saying_instance.SetDay();
+                }
+            });
+        };
+    });
+
 
     //document.getElementById('menu').click();
 }
@@ -102,7 +119,7 @@ function SayingCenter() {
     //文字資料
     this.Sayings = {
         data: null,
-        lastIndex:0
+        lastIndex: 0
     };
 
     //取得文字
@@ -124,8 +141,8 @@ function SayingCenter() {
                 //將取得的文字apped至option選單
                 ins.AppendSayings();
             }
-            else{
-                document.getElementById('saying_container').innerHTML='';
+            else {
+                document.getElementById('saying_container').innerHTML = '';
             }
 
             //設定首頁input
@@ -137,28 +154,28 @@ function SayingCenter() {
     this.SetTitle = function (id, data) {
         //先將input高度,寬度歸0
         let ipt = document.getElementById('saying');
-        ipt.style.height='0px';
-        ipt.setAttribute('cols',0);
+        ipt.style.height = '0px';
+        ipt.setAttribute('cols', 0);
 
         //綁入內容
         ipt.value = data;
         ipt.setAttribute('data-id', id);
         ipt.style.height = `${ipt.scrollHeight}px`;
-        ipt.setAttribute('cols', data.length);
+        ipt.setAttribute('cols', data.length + 1);
     };
 
     //將文字append至option選單
-    this.AppendSayings = function (lastIndex=null) {
+    this.AppendSayings = function (lastIndex = null) {
         let ins = this;
 
         let container = document.getElementById('saying_container');
         container.innerHTML = '';
-        
-        let data=null;
+
+        let data = null;
         //以新增時間排序(新到舊),取前5筆
-        if(lastIndex){
-            data=ins.Sayings.data.filter(d=>d.id<lastIndex).sort((a,b)=>{return a.time>b.time?-1:1}).slice(0,5);
-        }else{
+        if (lastIndex) {
+            data = ins.Sayings.data.filter(d => d.id < lastIndex).sort((a, b) => { return a.time > b.time ? -1 : 1 }).slice(0, 5);
+        } else {
             data = ins.Sayings.data.sort((a, b) => { return a.time > b.time ? -1 : 1 }).slice(0, 5);
         }
 
@@ -223,14 +240,14 @@ function SayingCenter() {
         });
 
         //判斷是否顯示LOAD MORE
-        if(data[data.length-1].id!==ins.Sayings.data[ins.Sayings.data.length-1].id){
-            document.getElementById('btn_load').style.display='block';
+        if (data[data.length - 1].id !== ins.Sayings.data[ins.Sayings.data.length - 1].id) {
+            document.getElementById('btn_load').style.display = 'block';
         }
-        else{
-            document.getElementById('btn_load').style.display='none';
+        else {
+            document.getElementById('btn_load').style.display = 'none';
         }
 
-        ins.Sayings.lastIndex=data[data.length-1].id;
+        ins.Sayings.lastIndex = data[data.length - 1].id;
     };
 
     //建立文字
@@ -291,7 +308,7 @@ function SayingCenter() {
 
             if (value.length === 0) {
                 //刪除
-                ins.DeteleSaying(id,true);
+                ins.DeteleSaying(id, true);
             }
             else {
                 //判斷修改後的值是否已存在
@@ -304,8 +321,8 @@ function SayingCenter() {
                     ins.Sayings.data.find(d => d.id === id).value = value;
                     chrome.storage.sync.set({ sayings: this.Sayings.data }, function () {
                         //alert('修改成功');
-                        if(parseInt(document.getElementById('saying').getAttribute('data-id'))===id){
-                            ins.SetTitle(id,value);
+                        if (parseInt(document.getElementById('saying').getAttribute('data-id')) === id) {
+                            ins.SetTitle(id, value);
                         }
                         document.querySelector(`.btn_edit[data-id="${id}"]`).click();
                     });
@@ -335,7 +352,7 @@ function SayingCenter() {
                     ins.Sayings.data.find(d => d.id === id).value = value;
                     chrome.storage.sync.set({ sayings: this.Sayings.data }, function () {
                         //alert('修改成功');
-                        ins.SetTitle(id,value);
+                        ins.SetTitle(id, value);
                         ins.AppendSayings();
                     });
                 }
@@ -348,4 +365,33 @@ function SayingCenter() {
         let value = this.Sayings.data.find(d => d.id === id).value;
         document.querySelector(`.quote_saying[data-id="${id}"]`).value = value;
     };
+
+    this.GetConfig = function (callBack) {
+        let ins = this;
+        chrome.storage.sync.get('is_night', function (data) {
+            ins.Config.is_night = data.is_night;
+            if (callBack) {
+                callBack(ins.Config.is_night);
+            };
+        });
+    };
+
+    this.SetNight = function () {
+        alert('night');
+    };
+
+    this.SetDay = function () {
+        alert('day');
+    };
+};
+
+function SetSwitch(element,callBack){
+    //找出其他checked狀態不同的switch
+    let other_btn = Array.apply(null, document.querySelectorAll('.switch>input')).filter(d => d !== element && d.checked !== element.checked);
+    if (other_btn.length > 0) {
+        other_btn[0].click();
+    }
+    else{
+        callBack(element.checked);
+    }
 };

@@ -157,6 +157,10 @@ body{
     visibility: hidden;
 }
 
+.quote_saying{
+    background-color:white ;
+}
+
 #menu{
     position: fixed;
     top: 20px;
