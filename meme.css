@@ -13,7 +13,19 @@ body{
 #main{
     position: relative;
     height: 100vh;
+    overflow: hidden;
 }
+#main.day{
+    background-color: white;
+}
+#main.night{
+    background-color: black;
+}
+
+#main.night #deco_quot{
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
 #main_saying{
     position: absolute;
     top: 150px;
@@ -35,19 +47,56 @@ body{
     padding: 0px;
     resize: none;
 }
-#saying:focus{
+
+#saying.day{
+    background-color: white;
+    color: black;
+}
+#saying.night{
+    background-color: black;
+    color: white;
+}
+
+#saying.day:focus{
     outline: none;
     box-shadow: 5px 5px black;
 }
+#saying.night:focus{
+    outline: none;
+    box-shadow: 5px 5px white;
+}
+
 #saying:not([data-id='N']):focus + #quick_btns{
     opacity: 1;
 }
+
 #quick_btns{
     opacity: 0;
     display: flex;
     flex-direction: row;
     margin-left: calc(30vw - 100px - 87px);
 }
+
+#quick_btns.day>#btn_quick_sqve{
+    background-color: black;
+    color: white;
+}
+
+#quick_btns.day>#btn_quick_cancel{
+    background-color: white;
+    color: black;
+}
+
+#quick_btns.night>#btn_quick_sqve{
+    background-color: white;
+    color: black;
+}
+
+#quick_btns.night>#btn_quick_cancel{
+    background-color: black;
+    color: white;
+}
+
 #quick_btns>a{
     width: 87px;
     line-height: 51px;
@@ -84,15 +133,81 @@ body{
     display: flex;
     flex-direction: row;
 }
+
+#slider.day{
+    background-image: url(images/scenery.jpg);
+}
+
+#slider.night{
+    background-image: url(images/scenery_night.jpg);
+}
+
 #edit{
     width: 70%;
     padding-top: 300px;
     padding-left: 150px;
 }
+
+#edit.day>#add_quote{
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    color: black;
+}
+
+#edit.night>#add_quote{
+    text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: white;
+}
+
+#edit.day #new_quote{
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    color: black;
+    border-bottom: 3px solid black;
+}
+
+#edit.night #new_quote{
+    text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: white;
+    border-bottom: 3px solid white;
+}
+
+#edit.day #btn_create{
+    color: black;
+}
+
+#edit.night #btn_create{
+    color: white;
+}
+
 #options{
     min-width: 30%;
     padding-top: 50px;
     padding-left: 32px;
+}
+
+#options.day{
+    color: black;
+}
+
+#options.night{
+    color: white;
+}
+
+#options.day .fas,#options.day #return,#options.day #btn_load{
+    color: black !important;
+}
+
+#options.night .fas,#options.night #return,#options.night #btn_load{
+    color: white !important;
+}
+
+#options.day .quote_saying{
+    background-color: white;
+    color: black;
+}
+
+#options.night .quote_saying{
+    background-color: black;
+    color: white;
 }
 
 #return{
@@ -172,6 +287,15 @@ body{
     padding-top: 6px;
     cursor: pointer;
 }
+
+#menu.day>div{
+    background-color: black;
+}
+
+#menu.night>div{
+    background-color: white;
+}
+
 #menu>div{
     width: 42px;
     height: 5px;
@@ -227,9 +351,4 @@ body{
     text-decoration: none;
     color: black;
     display: none;
-}
-
-
-.theme_day{
-    
 }
