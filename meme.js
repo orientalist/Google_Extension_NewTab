@@ -3,8 +3,8 @@ window.onload = function () {
 
     window.saying_instance.GetSayings();
 
-    window.saying_instance.GetConfig(function (is_night) {
-        is_night ? window.saying_instance.SetNight(true) : window.saying_instance.SetDay(true);
+    window.saying_instance.GetConfig(function (is_night) {        
+        is_night ?document.getElementById('main_switch').click():'';
     });
 
     //首頁快速編輯
@@ -385,7 +385,7 @@ function SayingCenter() {
 
         document.getElementById('slider').classList.replace('day','night');
         document.getElementById('options').classList.replace('day','night');
-
+        chrome.storage.sync.set({is_night:true},function(){});
     };
     
     this.SetDay = function () {
@@ -398,6 +398,7 @@ function SayingCenter() {
 
         document.getElementById('slider').classList.replace('night','day');
         document.getElementById('options').classList.replace('night','day');
+        chrome.storage.sync.set({is_night:false},function(){});
     };
 };
 

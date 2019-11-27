@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily meme popup</title>
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="stylesheet" href="popup.css">    
 </head>
 
-<body id='popup_menu'>
+<body id='popup_menu' class="day">
     <div class="pupup_menu">
         <div>
             <label class="menu_label">夜間模式</label>
@@ -23,7 +24,10 @@
         <div>
             <div class="menu_header">
                 <label class="menu_label">我的語錄</label>
-                <a href="#" class="a_menu_item" id='a_edit'>編輯</a>
+                <a href="#" style="display:none;" class="a_menu_item" id='a_edit'>編輯</a>
+            </div>
+            <div id='div_sayings'>
+                
             </div>
             <a id='a_add' class="a_menu_item a_day" href="#">+ 新增語錄</a>
             <hr>

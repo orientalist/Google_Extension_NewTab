@@ -119,3 +119,47 @@ input:checked+.slider:before {
     background-color: white;
     color: black;
 }
+
+.ipt_saying{
+    border: 0px;
+    outline: none;
+    font-size: 20px;
+    display: inline-block;
+    width: calc(100% - 100px);
+    padding-left: 10px;    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.div_btns{
+    display: inline-block;
+}
+
+.div_btns>a{
+    font-size: 20px;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+#popup_menu.day .ipt_saying{
+    background: white;
+    color: black;
+}
+
+#popup_menu.night .ipt_saying{
+    background: black;
+    color: white;    
+}
+
+#popup_menu.day .div_btns>a{
+    color: black;
+}
+
+#popup_menu.night .div_btns>a{
+    color: white;
+}
+
+.btn_save{
+    visibility: hidden;
+}
